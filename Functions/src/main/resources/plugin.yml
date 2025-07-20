@@ -1,0 +1,68 @@
+name: Functions
+version: '1.0.0'
+main: top.zhillerdev.functions.FunctionsMain
+
+description: Add new functions to your server
+author: ZhillerDev
+
+api-version: '1.21'
+
+commands:
+  func-help:
+    description: 'To use help'
+    usage: '/func-help [command]'
+    permission: functions.normal
+    aliases:
+      - fhelp
+
+  func-msg:
+    description: 'To send message'
+    usage: '/func-msg [message]'
+    permission: functions.normal
+    aliases:
+      - fmsg
+
+  func-gift:
+    description: 'To send item to sb'
+    usage: '/func-gift [command]'
+    permission: functions.normal
+    aliases:
+      - fgift
+
+  func-tpr:
+    description: 'To teleport to sb'
+    usage: '/func-tpr [command]'
+    permission: functions.normal
+    aliases:
+      - ftpr
+
+  func-dig:
+    description: 'Chain mining and tree cutting'
+    usage: '/func-dig [command]'
+    permission: functions.normal
+    aliases:
+      - fdig
+
+  func-home:
+    description: 'To set home or teleport to home'
+    usage: '/func-home [command]'
+    permission: functions.normal
+    aliases:
+      - fhome
+
+  func-navigation:
+    description: 'Navigation to waypoints'
+    usage: '/func-navigation <args> [command]'
+    permission: functions.normal
+    aliases:
+      - fnav
+
+
+permissions:
+  functions.normal:
+    default: true
+    description: 'Allow user to use normal commands'
+
+  functions.admin:
+    default: op
+    description: 'Allow to use admin commands'
