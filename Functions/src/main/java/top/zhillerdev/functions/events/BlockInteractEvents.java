@@ -25,6 +25,6 @@ public class BlockInteractEvents implements Listener {
     }
     
     chainMiningProcessor.process(e); // 连锁砍树与采矿功能
-    matrixMiningProcessor.process(e); // 矩阵挖掘功能
+    matrixMiningProcessor.processMatrixModeBlockBreak(e);
   }
 }

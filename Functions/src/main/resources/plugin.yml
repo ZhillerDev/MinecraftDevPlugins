@@ -57,6 +57,20 @@ commands:
     aliases:
       - fnav
 
+  func-inspect:
+    description: 'Inspect environment'
+    usage: '/func-inspect <args> [command]'
+    permission: functions.normal
+    aliases:
+      - fins
+
+  func-work:
+    description: 'Open workbench'
+    usage: '/func-work <command>'
+    permission: functions.normal
+    aliases:
+      - fwork
+
 
 permissions:
   functions.normal:

@@ -3,9 +3,11 @@ package top.zhillerdev.functions.events;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
+import top.zhillerdev.functions.events.mining.MatrixMiningProcessor;
 
 public class PlayerActionEvents implements Listener {
-  
+  private final MatrixMiningProcessor matrixMiningProcessor = new MatrixMiningProcessor();
   
   @EventHandler
   public void onPlayerChat(AsyncChatEvent e) {
@@ -15,5 +17,10 @@ public class PlayerActionEvents implements Listener {
     }
     
     
+  }
+  
+  @EventHandler
+  public void onPlayerInteract(PlayerInteractEvent e) {
+    matrixMiningProcessor.processMatrixMode(e);
   }
 }

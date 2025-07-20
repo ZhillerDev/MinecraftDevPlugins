@@ -58,4 +58,68 @@ public class MiningList {
       Material.NETHERITE_PICKAXE,
       Material.WOODEN_PICKAXE
   );
+  
+  // 可挖掘的岩石类型列表（不包括矿石和基岩）
+  public static final ImmutableList<Material> BLOCKS_ROCK = ImmutableList.of(
+      // 基础岩石
+      Material.STONE,
+      Material.COBBLESTONE,
+      Material.MOSSY_COBBLESTONE,
+      // 花岗岩系列
+      Material.GRANITE,
+      Material.POLISHED_GRANITE,
+      Material.GRANITE_STAIRS,
+      Material.GRANITE_SLAB,
+      // 闪长岩系列
+      Material.DIORITE,
+      Material.POLISHED_DIORITE,
+      Material.DIORITE_STAIRS,
+      Material.DIORITE_SLAB,
+      // 安山岩系列
+      Material.ANDESITE,
+      Material.POLISHED_ANDESITE,
+      Material.ANDESITE_STAIRS,
+      Material.ANDESITE_SLAB,
+      // 砂岩系列
+      Material.SANDSTONE,
+      Material.SMOOTH_SANDSTONE,
+      Material.CHISELED_SANDSTONE,
+      Material.SANDSTONE_STAIRS,
+      Material.SANDSTONE_SLAB,
+      // 红砂岩系列
+      Material.RED_SANDSTONE,
+      Material.SMOOTH_RED_SANDSTONE,
+      Material.CHISELED_RED_SANDSTONE,
+      Material.RED_SANDSTONE_STAIRS,
+      Material.RED_SANDSTONE_SLAB,
+      // 石砖系列
+      Material.STONE_BRICKS,
+      Material.CRACKED_STONE_BRICKS,
+      Material.CHISELED_STONE_BRICKS,
+      Material.MOSSY_STONE_BRICKS,
+      Material.STONE_BRICK_STAIRS,
+      Material.STONE_BRICK_SLAB,
+      // 下界岩石
+      Material.NETHERRACK,
+      Material.NETHER_BRICKS,
+      Material.CRACKED_NETHER_BRICKS,
+      Material.CHISELED_NETHER_BRICKS,
+      Material.NETHER_BRICK_STAIRS,
+      Material.NETHER_BRICK_SLAB,
+      // 末地岩石
+      Material.END_STONE,
+      Material.END_STONE_BRICKS,
+      Material.END_STONE_BRICK_STAIRS,
+      Material.END_STONE_BRICK_SLAB,
+      // 其他岩石
+      Material.OBSIDIAN,
+      Material.CRYING_OBSIDIAN,
+      Material.BASALT,
+      Material.POLISHED_BASALT,
+      Material.BLACKSTONE,
+      Material.POLISHED_BLACKSTONE,
+      Material.COBBLED_DEEPSLATE,
+      Material.DEEPSLATE_BRICKS,
+      Material.POLISHED_DEEPSLATE
+  );
 }

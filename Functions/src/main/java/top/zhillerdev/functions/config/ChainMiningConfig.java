@@ -8,6 +8,10 @@ public class ChainMiningConfig extends ConfigProvider {
   // 单例实例
   private static ChainMiningConfig instance;
   
+  // 配置键前缀定义
+  private static final String CHAIN_MINING_PREFIX = "players.%s.chain-mining";
+  private static final String AUTO_SOWING_PREFIX = "players.%s.auto-sowing";
+  
   /**
    * 私有构造函数，指定配置文件名
    */
@@ -40,10 +44,11 @@ public class ChainMiningConfig extends ConfigProvider {
    * @param player 玩家对象
    * @return 状态(true为开启, false为关闭, 默认为true)
    */
-  public boolean getStatus(Player player) {
+  public boolean getChainMiningStatus(Player player) {
     String playerName = player.getName();
+    String path = String.format(CHAIN_MINING_PREFIX, playerName);
     // 配置中没有记录时默认开启
-    return getConfig().getBoolean(playerName, true);
+    return getConfig().getBoolean(path, true);
   }
   
   /**
@@ -52,9 +57,36 @@ public class ChainMiningConfig extends ConfigProvider {
    * @param player 玩家对象
    * @param status 状态(true为开启, false为关闭)
    */
-  public void setStatus(Player player, boolean status) {
+  public void setChainMiningStatus(Player player, boolean status) {
     String playerName = player.getName();
-    getConfig().set(playerName, status);
+    String path = String.format(CHAIN_MINING_PREFIX, playerName);
+    getConfig().set(path, status);
+    save();
+  }
+  
+  /**
+   * 获取玩家的自动种田状态
+   *
+   * @param player 玩家对象
+   * @return 状态(true为开启, false为关闭, 默认为false)
+   */
+  public boolean getAutoSowingStatus(Player player) {
+    String playerName = player.getName();
+    String path = String.format(AUTO_SOWING_PREFIX, playerName);
+    // 配置中没有记录时默认关闭
+    return getConfig().getBoolean(path, false);
+  }
+  
+  /**
+   * 设置玩家的自动种田状态
+   *
+   * @param player 玩家对象
+   * @param status 状态(true为开启, false为关闭)
+   */
+  public void setAutoSowingStatus(Player player, boolean status) {
+    String playerName = player.getName();
+    String path = String.format(AUTO_SOWING_PREFIX, playerName);
+    getConfig().set(path, status);
     save();
   }
 }

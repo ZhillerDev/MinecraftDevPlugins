@@ -4,21 +4,28 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import top.zhillerdev.functions.FunctionsMain;
 import top.zhillerdev.functions.config.TpConfig;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class NavCommand implements CommandExecutor {
+public class NavCommand implements CommandExecutor, TabCompleter {
   public NavCommand(FunctionsMain plugin) {
   }
   
+  
   @Override
-  public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command, @NotNull String label, String[] args) {
+  public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command, @NotNull String label, String @NotNull [] args) {
     // 检查是否为玩家执行命令
     if (!(sender instanceof Player player)) {
       sender.sendMessage(Component.text("此命令只能由玩家执行！")
@@ -233,6 +240,7 @@ public class NavCommand implements CommandExecutor {
         .color(NamedTextColor.GRAY));
   }
   
+  
   /**
    * 检查位置是否安全（防止传送进方块）
    */
@@ -266,5 +274,46 @@ public class NavCommand implements CommandExecutor {
       }
     }
     return null;
+  }
+  
+  @Override
+  public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
+    // 只允许玩家使用Tab补全
+    if (!(sender instanceof Player player)) {
+      return new ArrayList<>();
+    }
+    
+    // 第一级参数补全（子命令）
+    if (args.length == 1) {
+      List<String> commands = Arrays.asList("set", "go", "show", "del", "delete");
+      return StringUtil.copyPartialMatches(args[0], commands, new ArrayList<>());
+    }
+    
+    // 第二级参数补全（根据子命令提供不同补全）
+    if (args.length == 2) {
+      String subCommand = args[0].toLowerCase();
+      
+      // 对于go、del、delete子命令，补全导航点名称
+      if (subCommand.equals("go") || subCommand.equals("del") || subCommand.equals("delete")) {
+        List<TpConfig.Waypoint> waypoints = TpConfig.getInstance().getAllWaypoints(player);
+        List<String> waypointNames = new ArrayList<>();
+        
+        for (TpConfig.Waypoint waypoint : waypoints) {
+          waypointNames.add(waypoint.getName());
+        }
+        
+        return StringUtil.copyPartialMatches(args[1], waypointNames, new ArrayList<>());
+      }
+      
+      // 对于set子命令，可以提示用户输入名称
+      if (subCommand.equals("set")) {
+        List<String> suggestions = new ArrayList<>();
+        suggestions.add("导航点名称");
+        return StringUtil.copyPartialMatches(args[1], suggestions, new ArrayList<>());
+      }
+    }
+    
+    // 其他情况返回空列表
+    return new ArrayList<>();
   }
 }

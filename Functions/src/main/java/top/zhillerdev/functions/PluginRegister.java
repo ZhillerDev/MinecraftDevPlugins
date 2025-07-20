@@ -2,6 +2,8 @@ package top.zhillerdev.functions;
 
 import org.bukkit.plugin.PluginManager;
 import top.zhillerdev.functions.commands.datas.HelpCommand;
+import top.zhillerdev.functions.commands.datas.InspectCommand;
+import top.zhillerdev.functions.commands.guis.WorkCommand;
 import top.zhillerdev.functions.commands.players.*;
 import top.zhillerdev.functions.config.ChainMiningConfig;
 import top.zhillerdev.functions.config.TpConfig;
@@ -26,10 +28,13 @@ public class PluginRegister {
     Objects.requireNonNull(plugin.getCommand("fmsg")).setExecutor(new MsgCommand(plugin));
     Objects.requireNonNull(plugin.getCommand("fgift")).setExecutor(new GiftCommand(plugin));
     Objects.requireNonNull(plugin.getCommand("fhelp")).setExecutor(new HelpCommand());
-//    Objects.requireNonNull(plugin.getCommand("ftpr")).setExecutor(new TprCommand(plugin));
+    Objects.requireNonNull(plugin.getCommand("ftpr")).setExecutor(new TprCommand(plugin));
     Objects.requireNonNull(plugin.getCommand("fdig")).setExecutor(new DigCommand(plugin));
     Objects.requireNonNull(plugin.getCommand("fhome")).setExecutor(new HomeCommand(plugin));
     Objects.requireNonNull(plugin.getCommand("fnav")).setExecutor(new NavCommand(plugin));
+    Objects.requireNonNull(plugin.getCommand("fins")).setExecutor(new InspectCommand(plugin));
+    Objects.requireNonNull(plugin.getCommand("ftpr")).setExecutor(new TprCommand(plugin));
+    Objects.requireNonNull(plugin.getCommand("fwork")).setExecutor(new WorkCommand(plugin));
   }
   
   public void registerEvents() {

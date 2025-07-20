@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class HelpCommand implements CommandExecutor {
   // 每页显示的命令数量
-  private static final int COMMANDS_PER_PAGE = 5;
+  private static final int COMMANDS_PER_PAGE = 8;
   
   // 存储所有命令帮助信息
   private static final Map<String, String> commandHelpMap = new HashMap<>();
@@ -25,12 +25,13 @@ public class HelpCommand implements CommandExecutor {
     // 初始化帮助信息
     commandHelpMap.put("/fhelp [页码]", "显示帮助信息，可指定页码");
     commandHelpMap.put("/fmsg <玩家> <消息>", "向指定玩家发送私信");
+    commandHelpMap.put("/fdig <功能> <参数>", "对多种连锁挖掘、采集功能进行设置或者开关");
     commandHelpMap.put("/fgift <玩家> [数量]", "向指定玩家赠送物品，数量输入0表示全部赠送");
     commandHelpMap.put("/fhome", "设置或者返回自己的家");
-    commandHelpMap.put("/ftpr <玩家>", "[建设中]请求传送到指定玩家身边，需对方许可");
-    commandHelpMap.put("/fsethome", "[建设中]设置自己的家的位置");
-    commandHelpMap.put("/fback", "[建设中]返回到上一个位置");
-    commandHelpMap.put("/fspawn", "[建设中]传送到出生点");
+    commandHelpMap.put("/fnav <功能> <参数>", "设置一个或多个导航点，实现快速传送，至多10个导航点");
+    commandHelpMap.put("/ftpr <玩家>", "请求传送到指定玩家身边，需对方许可");
+    commandHelpMap.put("/fwork <功能>", "打开一个便携式的工作台或者随身口袋");
+    commandHelpMap.put("/fins <参数>", "对周围数据进行调查");
     
     
     // 将命令放入有序列表，保持固定显示顺序

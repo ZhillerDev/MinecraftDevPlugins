@@ -15,7 +15,7 @@ public class ChainMiningProcessor {
   
   public void process(BlockBreakEvent e) {
     // 1. 检查玩家是否开启连锁采矿
-    boolean isEnabled = ChainMiningConfig.getInstance().getStatus(e.getPlayer());
+    boolean isEnabled = ChainMiningConfig.getInstance().getChainMiningStatus(e.getPlayer());
     if (!isEnabled) {
       return;
     }
